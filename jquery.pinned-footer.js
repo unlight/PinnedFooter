@@ -16,6 +16,7 @@
 			return (root.scrollHeight > root.clientHeight);
 		}
 
+		// Private methods.
 		var C = function(Name, Default) {
 			if (typeof(Default) == 'undefined') Default = false;
 			var Result = Default;
@@ -23,7 +24,6 @@
 			return Result;
 		}
 		
-		// Private methods.
 		var ExpandContainer = function() {
 			// http://stackoverflow.com/questions/681087
 			if (Self.IsVerticalScrollbar()) return;
