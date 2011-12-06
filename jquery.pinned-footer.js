@@ -11,7 +11,8 @@
 		var Configuration = {
 			FixScroll: true,
 			FixResize: true,
-			HeightAddition: 0
+			HeightAddition: 0,
+			Timer: null
 		};
 		Self.Settings = {};
 
@@ -51,11 +52,15 @@
 			ExpandContainer.call($Container);
 		};
 		
+		ExpandContainerHandler();
+		
 		if (C('FixScroll')) $(window).scroll(ExpandContainerHandler);
 		if (C('FixResize')) $(window).resize(ExpandContainerHandler);
+		
+		var Timer = parseInt(C('Timer'), 10);
+		if (Timer > 0) setInterval(ExpandContainerHandler, Timer);
 
 		return this;
-
 	}
 	
 	$.fn.PinFooter = function(Options) {
