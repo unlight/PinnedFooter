@@ -27,7 +27,7 @@
 			var Result = Default;
 			if (Name in Self.Settings) Result = Self.Settings[Name];
 			return Result;
-		}
+		};
 		
 		var ExpandContainer = function() {
 			// http://stackoverflow.com/questions/681087
@@ -41,21 +41,18 @@
 			if ($Content.height() < DummyHeight) {
 				$Content.height(DummyHeight);
 			}
-		}
+		};
 
 		// Initialize.
 		var $Container = $(Container).first();
 		Self.Settings = $.extend({ }, Configuration, Options);
 		
-		ExpandContainer.call($Container);
-		
-		if (C('FixScroll')) $(window).scroll(function(){
+		var ExpandContainerHandler = function() {
 			ExpandContainer.call($Container);
-		});
+		};
 		
-		if (C('FixResize')) $(window).resize(function(){
-			ExpandContainer.call($Container);
-		});
+		if (C('FixScroll')) $(window).scroll(ExpandContainerHandler);
+		if (C('FixResize')) $(window).resize(ExpandContainerHandler);
 
 		return this;
 
