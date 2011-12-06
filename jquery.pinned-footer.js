@@ -1,12 +1,17 @@
-// jQuery plugin. Pinned Footer
-// Footer always at the bottom of the page, not window.
-(function($) {
+// jQuery plugin
+// Name: Pinned Footer
+// Description: Footer always at the bottom of the page, not window.
+// URL: https://github.com/search?q=PinnedFooter
+// Version: 1.01
+
+(function($){
 	
 	$.PinFooter = function(Container, Options) {
 		var Self = this;
 		var Configuration = {
 			FixScroll: true,
-			FixResize: true
+			FixResize: true,
+			HeightAddition: 0
 		};
 		Self.Settings = {};
 
@@ -29,11 +34,13 @@
 			if (Self.IsVerticalScrollbar()) return;
 			var $Content = $(this);
 			$Content.css('position', 'relative');
-			var DummyHeight = $Content.height() + $(window).height() - $("body").height() - 2; // S: -2 was added by me
+			var DummyHeight = $Content.height() + $(window).height() - $("body").height() + C('HeightAddition', 0);
 			var Ruler = $("<div>").appendTo($Content);
 			DummyHeight = Math.max(Ruler.position().top, DummyHeight);
 			Ruler.remove();
-			$Content.height(DummyHeight);
+			if ($Content.height() < DummyHeight) {
+				$Content.height(DummyHeight);
+			}
 		}
 
 		// Initialize.

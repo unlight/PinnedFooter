@@ -1,3 +1,11 @@
 jQuery plugin. Pinned Footer
 ============================
 Footer always at the bottom of the page, not window.
+
+CHANGELOG
+=========
+1.01 (Unknown date)
+- added HeightAddition
+
+1.00 (07 Jul 2011)
+- first release
