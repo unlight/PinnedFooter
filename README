@@ -1,6 +1,10 @@
-jQuery plugin. Pinned Footer
-============================
+PINNED FOOTER
+=============
 Footer always at the bottom of the page, not window.
+
+TODO
+====
+1. Need fix if $.PinFooter("#Content, #Panel");
 
 CHANGELOG
 =========

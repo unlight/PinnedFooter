@@ -45,7 +45,6 @@
 
 		// Initialize.
 		var $Container = $(Container).first();
-		// TODO: FIX IF $.PinFooter("#Content, #Panel");
 		Self.Settings = $.extend({ }, Configuration, Options);
 		
 		ExpandContainer.call($Container);
