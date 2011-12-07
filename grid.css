@@ -1,0 +1,57 @@
+/* ================ */
+/* = The 1Kb Grid = */     
+/* 10 columns, 80 pixels each, with 20 pixel gutter = 1000px */
+/* ================ */
+
+.Row {
+/*	width: 1000px; */ /* should be defined in container */
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.Row .Row {
+	margin: 0 -1%;
+	width: auto;
+	/*display: inline-block;*/
+}
+
+/* Clear fix for modern browsers */
+.Row:before, .Row:after {  content: ""; display: table; }
+.Row:after { clear:both; }
+.Row { zoom:1; } /* For IE 6/7 (trigger hasLayout) */
+
+.Clear:before, .Clear:after {  content: ""; display: table; }
+.Clear:after { clear:both; }
+.Clear { zoom:1; }
+
+.Column1, .Column2, .Column3, .Column4, .Column5,
+.Column6, .Column7, .Column8, .Column9, .Column10 {
+	margin: 0 1%;
+	overflow: hidden;
+	float: left;
+	display: inline;
+}
+
+.Column1 { width:8%; }
+.Column2 { width:18%; }
+.Column3 { width:28%; }
+.Column4 { width:38%; }
+.Column5 { width:48%; }
+.Column6 { width:58%; }
+.Column7 { width:68%; }
+.Column8 { width:78%; }
+.Column9 { width:88%; }
+.Column10 { width:98%; }
+
+.IE6 .Column1, 
+.IE6 .Column2, 
+.IE6 .Column3, 
+.IE6 .Column4, 
+.IE6 .Column5,
+.IE6 .Column6, 
+.IE6 .Column7, 
+.IE6 .Column8, 
+.IE6 .Column9, 
+.IE6 .Column10 {
+	margin: 0 0.95%;
+}

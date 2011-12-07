@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>#</title>
+	<link rel="stylesheet" href="grid.css" type="text/css" media="screen" charset="utf-8">
+	<style type="text/css" media="screen">
+	/*
+	 & A little bit of styling
+	 */
+	body {
+		font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+	}
+	
+	h1 {
+		border: solid 1px black;
+		text-align: center;
+		padding: 10px;
+	}
+	
+	p {
+		font:60px/100px Helvetica;
+		color: #000;
+		text-align: center;
+		border: 1px solid #000;
+		margin: 0 0 20px 0;
+		border-radius: 5px;
+	}
+	
+	#Body {
+		width: 90%;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	</style>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+	<script src="jquery.pinned-footer.js" type="text/javascript"></script>
+	<script language="JavaScript">
+	$(window).load(function(){
+		
+		if (NoPinnedFooter) return;
+		$('#Foot').PinFooter({
+			FixOnScroll: true,		// Add handler on window scroll event
+			FixOnResize: true,		// Add handler on window resize event
+			FixOnLoad: true,		// Add handler on window load event
+			Method: 'ExpandBody', 	// Method to set footer at the bottom (ExpandBody, ExpandContainer)
+			HeightAddition: 0,	// Addition value which will be added to Height of $Content (only for method 'ExpandContainer')
+			Timer: null, 			// Run timer (only for method 'ExpandContainer')
+			BodySelector: null
+		});
+		
+	});
+	var search = document.location.search;
+	var NoPinnedFooter = search.indexOf('NoPinnedFooter') != -1;
+	</script>
+</head>
+
+<body>
+	
+	<div id="Body" class="Container">
+		
+	<div class="Row">
+		<div class="Column10"><p>10</p></div>
+	</div>
+
+	<div class="Row">
+		<div class="Column6"><p>6</p>
+			<div class="Row" style="">
+				<div class="Column5"><p>5</p></div>
+				<div class="Column5"><p>5</p></div>
+			</div>
+		</div>
+		<div class="Column4"><p style="line-height: 222px;">4</p></div>
+		
+		<div class="Info" style="text-align:center">
+			<h6><a href="?NoPinnedFooter">Click here to see layout WITHOUT PinFooter() script</a></h6>
+			<h6><a href="?">Click here to see layout WITH PinFooter() script</a></h6>
+		</div>
+	</div>
+	
+	
+	</div>
+	
+	<div id="Foot">
+	<div class="Row">
+		<div class="Column10"><p>Footer</p>
+		</div>
+	</div>
+	
+	</div>
+		
+	
+</body>
+</html>
