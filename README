@@ -1,3 +1,17 @@
-jQuery plugin. Pinned Footer
-============================
+PINNED FOOTER
+=============
 Footer always at the bottom of the page, not window.
+
+TODO
+====
+- provide demo
+- need fix if $.PinFooter("#Content, #Panel");
+
+CHANGELOG
+=========
+1.02 (8 Dec 2011)
+- added new method
+- added HeightAddition
+
+1.00 (07 Jul 2011)
+- first release
