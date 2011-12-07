@@ -17,6 +17,7 @@
 		Self.Settings = {};
 
 		// Public methods.
+		// http://stackoverflow.com/questions/681087
 		Self.IsVerticalScrollbar = function() {
 			var root = document.compatMode == 'BackCompat' ? document.body : document.documentElement;
 			return (root.scrollHeight > root.clientHeight);
@@ -24,17 +25,16 @@
 
 		// Private methods.
 		var C = function(Name, Default) {
-			if (typeof(Default) == 'undefined') Default = false;
+			if (typeof Default == 'undefined') Default = false;
 			var Result = Default;
 			if (Name in Self.Settings) Result = Self.Settings[Name];
 			return Result;
 		};
 		
 		var ExpandContainer = function() {
-			// http://stackoverflow.com/questions/681087
 			if (Self.IsVerticalScrollbar()) return;
-			var $Content = $(this);
-			$Content.css('position', 'relative');
+			// http://habrahabr.ru/blogs/webdev/116267/
+			var $Content = $(this).css('position', 'relative');
 			var DummyHeight = $Content.height() + $(window).height() - $("body").height() + C('HeightAddition', 0);
 			var Ruler = $("<div>").appendTo($Content);
 			DummyHeight = Math.max(Ruler.position().top, DummyHeight);
