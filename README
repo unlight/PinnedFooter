@@ -4,11 +4,13 @@ Footer always at the bottom of the page, not window.
 
 TODO
 ====
-1. Need fix if $.PinFooter("#Content, #Panel");
+- provide demo
+- need fix if $.PinFooter("#Content, #Panel");
 
 CHANGELOG
 =========
-1.01 (Unknown date)
+1.02 (8 Dec 2011)
+- added new method
 - added HeightAddition
 
 1.00 (07 Jul 2011)
