@@ -2,7 +2,7 @@
 // Name: Pinned Footer
 // Description: Footer always at the bottom of the page, not window.
 // URL: https://github.com/search?q=PinnedFooter
-// Version: 1.02
+// Version: 1.03
 
 (function($){
 	
