@@ -51,7 +51,7 @@
 		var ExpandBody = function() {
 			if (Self.IsVerticalScrollbar()) return;
 			var WindowHeight = $(window).height();
-			var BodyHeight = $("body").height();
+			var BodyHeight = $("body").outerHeight(true);
 			var Margin = WindowHeight - BodyHeight;
 			var MaxHeight = 0;
 			$Body.children().each(function(Index, Child){

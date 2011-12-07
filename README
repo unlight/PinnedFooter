@@ -9,6 +9,9 @@ TODO
 CHANGELOG
 =========
 1.02 (8 Dec 2011)
+- body height include margin
+
+1.02 (8 Dec 2011)
 - added new method
 - added HeightAddition
 
