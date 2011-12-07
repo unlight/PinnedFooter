@@ -2,19 +2,23 @@
 // Name: Pinned Footer
 // Description: Footer always at the bottom of the page, not window.
 // URL: https://github.com/search?q=PinnedFooter
-// Version: 1.01
+// Version: 1.02
 
 (function($){
 	
 	$.PinFooter = function(Container, Options) {
 		var Self = this;
 		var Configuration = {
-			FixScroll: true,
-			FixResize: true,
-			HeightAddition: 0,
-			Timer: null
+			FixOnScroll: true,		// Add handler on window scroll event
+			FixOnResize: true,		// Add handler on window resize event
+			FixOnLoad: true,		// Add handler on window load event
+			Method: 'ExpandBody', 	// Method to set footer at the bottom (ExpandBody, ExpandContainer)
+			HeightAddition: 0,	// Addition value which will be added to Height of $Content (only for method 'ExpandContainer')
+			Timer: null, 			// Run timer (only for method 'ExpandContainer')
+			BodySelector: null
 		};
-		Self.Settings = {};
+		
+		Self.Settings = $.extend({ }, Configuration, Options);
 
 		// Public methods.
 		// http://stackoverflow.com/questions/681087
@@ -30,7 +34,7 @@
 			if (Name in Self.Settings) Result = Self.Settings[Name];
 			return Result;
 		};
-		
+	
 		var ExpandContainer = function() {
 			if (Self.IsVerticalScrollbar()) return;
 			// http://habrahabr.ru/blogs/webdev/116267/
@@ -43,22 +47,46 @@
 				$Content.height(DummyHeight);
 			}
 		};
-
-		// Initialize.
-		var $Container = $(Container).first();
-		Self.Settings = $.extend({ }, Configuration, Options);
 		
-		var ExpandContainerHandler = function() {
-			ExpandContainer.call($Container);
+		var ExpandBody = function() {
+			if (Self.IsVerticalScrollbar()) return;
+			var WindowHeight = $(window).height();
+			var BodyHeight = $("body").height();
+			var Margin = WindowHeight - BodyHeight;
+			var MaxHeight = 0;
+			$Body.children().each(function(Index, Child){
+				var H = $(Child).height();
+				if (H > MaxHeight) MaxHeight = H;
+			});
+			if (MaxHeight > $Body.height()) $Body.height(MaxHeight);
+			$Body.height('+='+Margin);
 		};
 		
-		ExpandContainerHandler();
+		// Initialize.
+		var HandlerFunction;
+		var $Container = $(Container).first();
+		var $Body = $(Container).prev();
+		var BodySelector = C('BodySelector');
+		if (BodySelector) $Body = $(BodySelector).first();
 		
-		if (C('FixScroll')) $(window).scroll(ExpandContainerHandler);
-		if (C('FixResize')) $(window).resize(ExpandContainerHandler);
+		switch(C('Method')) {
+			case 'ExpandContainer': {
+				HandlerFunction = function() {
+					ExpandContainer.call($Container);
+				};
+			} break;
+			default:
+			HandlerFunction = ExpandBody;
+		}
+		
+		if (C('FixOnScroll')) $(window).scroll(HandlerFunction);
+		if (C('FixOnResize')) $(window).resize(HandlerFunction);
+		if (C('FixOnLoad')) $(window).load(HandlerFunction);
+		
+		HandlerFunction();
 		
 		var Timer = parseInt(C('Timer'), 10);
-		if (Timer > 0) setInterval(ExpandContainerHandler, Timer);
+		if (Timer > 0) setInterval(HandlerFunction, Timer);
 
 		return this;
 	}
