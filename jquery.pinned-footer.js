@@ -2,9 +2,9 @@
 // Name: Pinned Footer
 // Description: Footer always at the bottom of the page, not window.
 // URL: https://github.com/search?q=PinnedFooter
-// Version: 1.03
+// Version: 1.04
 
-(function($){
+(function(){
 	
 	$.PinFooter = function(Container, Options) {
 		var Self = this;
@@ -59,7 +59,7 @@
 				if (H > MaxHeight) MaxHeight = H;
 			});
 			if (MaxHeight > $Body.height()) $Body.height(MaxHeight);
-			$Body.height('+='+Margin);
+			$Body.height($Body.height() + Margin);
 		};
 		
 		// Initialize.
@@ -95,4 +95,4 @@
 		return $.PinFooter(this, Options);
 	}
 
-})(jQuery);
+})();
