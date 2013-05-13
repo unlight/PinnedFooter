@@ -8,6 +8,9 @@ TODO
 
 CHANGELOG
 =========
+1.04 (13 May 2013)
+- removed fixed height if no need to resize
+
 1.03 (8 Dec 2011)
 - body height include margin
 

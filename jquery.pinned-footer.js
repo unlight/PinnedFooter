@@ -4,7 +4,7 @@
 // URL: https://github.com/search?q=PinnedFooter
 // Version: 1.04
 
-(function(){
+(function($){
 	
 	$.PinFooter = function(Container, Options) {
 		var Self = this;
@@ -49,7 +49,10 @@
 		};
 		
 		var ExpandBody = function() {
-			if (Self.IsVerticalScrollbar()) return;
+			if (Self.IsVerticalScrollbar()) {
+				$Body.height("auto");
+				return;
+			}
 			var WindowHeight = $(window).height();
 			var BodyHeight = $("body").outerHeight(true);
 			var Margin = WindowHeight - BodyHeight;
@@ -95,4 +98,4 @@
 		return $.PinFooter(this, Options);
 	}
 
-})();
+})($);
